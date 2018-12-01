@@ -9,6 +9,15 @@ public class BST {
   public static void main(String[] args) {
     BST a = new BST(8, null, null);  
     System.out.println( a ); // expect 8
+    System.out.println( a.find(8) ); // true
+    System.out.println( a.find(12) ); // false
+  }
+  public boolean find(int value) {
+    if (this.value == value) return true;
+    else if (this.value < value) 
+      return (this.left == null) ? false : this.left.find(value); 
+    else // this.value > value 
+      return (this.right == null) ? false : this.right.find(value); 
   }
   public String toString() {
     String left = (this.left  == null) ? "" : this.left.toString(), 
