@@ -8,15 +8,22 @@ public class BST {
   }
   public static void main(String[] args) {
     BST a = new BST(8, null, null);  
-    System.out.println( a.show() ); // (. 8 .)
     a.insert(3); 
-    System.out.println( a.show() ); // ((. 3 .) 8 .)
     a.insert(5);
-    System.out.println( a.show() ); // ((. 3 (. 5 .)) 8 .)
-    a.insert(7);
-    System.out.println( a.show() ); // ((. 3 (. 5 (. 7 .))) 8 .)
-    a.insert(9);
-    System.out.println( a.show() ); // ((. 3 (. 5 (. 7 .))) 8 (. 9 .))
+    System.out.println( a.show() ); // ((. 3 (. 5 .)) 8 .) 
+    System.out.println( a ); // 3  5  8  
+    // let's try again, same three values, different order 
+    a = new BST(3, null, null);  
+    a.insert(5); 
+    a.insert(8);
+    System.out.println( a.show() ); // (. 3 (. 5 (. 8 .))) 
+    System.out.println( a ); // 3  5  8
+    // one more time, same three values, different order 
+    a = new BST(8, null, null);  
+    a.insert(5); 
+    a.insert(3);
+    System.out.println( a.show() ); // (((. 3 .) 5 .) 8 .) 
+    System.out.println( a ); // 3  5  8
   }
   public void insert(int value) {
     if (this.value == value) return;
