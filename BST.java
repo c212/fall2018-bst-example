@@ -8,22 +8,15 @@ public class BST {
   }
   public static void main(String[] args) {
     BST a = new BST(8, null, null);  
-    System.out.println( a ); // expect 8
-    System.out.println( a.find(8) ); // true
-    System.out.println( a.find(7) ); // false
-    a.left = new BST(7, null, null); 
-    System.out.println( a ); // 7  8
-    System.out.println( a.find(7) ); // true    
-    a.insert(12); 
-    System.out.println( a ); // 7  8  12
-    a.insert(5); 
-    System.out.println( a ); // 5  7  8  12 
-    a.insert(6); 
-    System.out.println( a ); // 5  6  7  8  12
-    a.insert(10); 
-    System.out.println( a ); // 5  6  7  8  10  12
-    a.insert(11); 
-    System.out.println( a ); // 5  6  7  8  10  11  12
+    System.out.println( a.show() ); // (. 8 .)
+    a.insert(3); 
+    System.out.println( a.show() ); // ((. 3 .) 8 .)
+    a.insert(5);
+    System.out.println( a.show() ); // ((. 3 (. 5 .)) 8 .)
+    a.insert(7);
+    System.out.println( a.show() ); // ((. 3 (. 5 (. 7 .))) 8 .)
+    a.insert(9);
+    System.out.println( a.show() ); // ((. 3 (. 5 (. 7 .))) 8 (. 9 .))
   }
   public void insert(int value) {
     if (this.value == value) return;
@@ -47,5 +40,10 @@ public class BST {
     String left = (this.left  == null) ? "" : this.left.toString(), 
           right = (this.right == null) ? "" : this.right.toString();
     return left + " " + this.value + " " + right;     
+  }
+  public String show() {
+    return "(" + ((this.left  == null) ? "." : this.left.show())  + 
+           " " +  this.value + " " + 
+                 ((this.right == null) ? "." : this.right.show()) + ")"; 
   }
 }
